@@ -1,6 +1,6 @@
-# QuadraticWaveLed
+# WavePWM
 
-Pulses a LED according to a sine wave, with the periodicity given as argument.
+Calculates PWM values according to a sine wave, with the periodicity given as argument.
 
 The pins output used for these must be PWM pins.
 

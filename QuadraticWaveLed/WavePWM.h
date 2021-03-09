@@ -1,18 +1,23 @@
 /*
-  QuadraticWaveLed.h
-  Pulses a LED according to a sine wave, with the periodicity given as argument.
+  WavePWM.h
 
-  The pins output used for these must be PWM pins.
+  Calculate a sine wave, with the periodicity given as argument.
 
   Please see https://idyl.io for complete tutorial on how this works.
   
   This example code is licensed under CC BY 4.0.
   Please see https://creativecommons.org/licenses/by/4.0/
 
-  modified 18 January 2017
-  by Tony Pottier
-  
+  Original code written 18 January 2017 by Tony Pottier
+
+  Modified 9 Mar 2021 by Markus Kalkbrenner
+    - use the class to only calculate the values and let the LED by driven by the calling code
+    - merged modifications from 5 Mar 2020 by Brad Roy to alternatively change from a 'sine-esque' function
+   	  to an exponential one which *looks* more linear
 */
+
+#include <stdint.h>
+#include <Arduino.h>
 
 typedef int16_t f7p9;
 typedef uint32_t uf16p16;
@@ -43,16 +48,16 @@ static inline f7p9 mulf7p9(f7p9 a, f7p9 b){
 	return  (f7p9)  (  (( (int32_t)a * (int32_t)b) >> 9) );
 }
 
-class QuadraticWaveLed{
+class WavePWM{
 	private:
 	f7p9 quadraticWavef7p9(f7p9 x);
-	f7p9 value;
-	int pinNo;
+    f7p9 exponentialWavef7p9(f7p9 x);
 	unsigned long waveLen;
 	uf16p16 inverseWaveLen;
 	
 	public:
-	void setup(const int pinNumber, const unsigned long waveDuration);
-	void update(const unsigned long milli);
+	void setup(const unsigned long waveDuration);
+    uint8_t getQuadraticValue(const unsigned long milli);
+    uint8_t getExponentialValue(const unsigned long milli);
 };
 
