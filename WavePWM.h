@@ -16,6 +16,9 @@
    	  to an exponential one which *looks* more linear
 */
 
+#ifndef WavePWM_h
+#define WavePWM_h
+
 #include <stdint.h>
 #include <Arduino.h>
 
@@ -61,3 +64,4 @@ class WavePWM{
     uint8_t getExponentialValue(const unsigned long milli);
 };
 
+#endif
