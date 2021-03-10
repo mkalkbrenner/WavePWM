@@ -75,7 +75,7 @@ uint8_t WavePWM::getQuadraticValue(const unsigned long milli){
 	return (uint8_t) (((int32_t)value * floattof23p9(127.5f)) >> 18);
 }
 
-void WavePWM::getExponentialValue(const unsigned long milli){
+uint8_t WavePWM::getExponentialValue(const unsigned long milli){
 	unsigned long mod = milli % this->waveLen;
 
 	//transform to 0--1 range
