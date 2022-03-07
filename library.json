@@ -1,7 +1,7 @@
 {
   "name": "WavePWM",
   "description": "Sine Pulse Similar LED PWM",
-  "keywords": "",
+  "keywords": "sine, pwm",
   "authors": {
     "name": "Markus Kalkbrenner",
     "url": "https://github.com/mkalkbrenner/WavePWM"
@@ -16,5 +16,6 @@
   },
   "examples": [
     "examples/*.ino"
-  ]
+  ],
+  "license": "CC-BY-4.0"
 }
